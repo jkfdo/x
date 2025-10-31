@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Venz</title>
+  
+  <!-- HTML -->
+
+  <!-- Custom Styles -->
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  
+  
+  
+  
+  <style type="text/css" media="all">
+    
+            *{
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+                transition: all 0.3s;    
+                font-family: "Noto Sans", sans-serif;
+            }
+            
+            ::selection{
+                background: var(--clr00);
+                color: var(--clr01);
+            }
+            
+            :root{
+                --clr00: #0B7;
+                --clr01: #048;
+                
+                --white: #fff;
+                --black: #000;
+            }
+            
+            body {
+                width: 100vw;
+                max-width: 1200px;
+                overflow-x: hidden;
+                background: var(--white);
+                position: relative;
+                margin: auto;
+                margin-top: 70px;
+            }
+            
+            header{
+                position: fixed;
+                top: 0;
+                height: 70px;
+                width: 100%;
+                background: linear-gradient(45deg, var(--clr01), var(--clr00));
+                z-index: 99;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 2%;
+            }
+            
+            .searchBox{
+                border: 0;
+                width: 250px;
+                height: 40px;
+                padding: 0 10px;
+                border-radius: 10px;
+            }
+            .searchBox:focus {
+                outline: solid 5px var(--black);
+            }
+            
+            .holder,
+            .sHolder{
+                width: 100%;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2%;
+                padding: 2%;
+            }
+            
+            .sHolder {
+                position: fixed;
+                top: 70px;
+                right: 0;
+                display: none;
+                background: var(--white); 
+            }
+            
+            
+            .box{
+                border-radius: 10px;
+                aspect-ratio: 4/3;
+                background: var(--clr00);
+                position: relative;
+            }
+            .box-bg{
+                width: 100%;
+                aspect-ratio: 16/9;
+                border-radius: 10px;
+                border-bottom-right-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+            
+            .content{
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+            }
+            .content .title{
+                font-size: 20px;
+                margin: 0 2% 1% 2%;
+            }
+            .content .more{
+                font-size: 16px;
+                font-weight: 600; 
+            }
+            .more span{
+                background: var(--clr01);
+                padding: 2px 5px;
+                margin: 0 2% 0 2%;
+            }
+            .details{
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                width: 50px;
+                height: 50px;
+                border-radius: 10px;
+                overflow: hidden;
+                padding: 2%;
+                background: var(--clr01);
+            }
+            .details:hover{
+                background: linear-gradient(-45deg, var(--clr01), var(--clr00));
+                width: 85%;
+                height: auto;
+            }
+            
+            
+            .details,
+            .content{
+                color: var(--white);
+            }
+            .title,
+            .details .artists,
+            .publish-date{
+                color: var(--black);
+            }
+            
+            .details .title{
+                font-size: 20px;
+            }
+            .details .artists {
+                font-size: 18px;
+            }
+            .details .genre , .moode{
+                font-size: 15px;
+                font-weight: 550; 
+            }
+            .publish-date{
+                font-size: 16px;
+            }
+            
+            .links{
+                margin-top: 5px;
+            }
+            
+            .links a {
+                padding: 3px 7px;
+                background: var(--clr01);
+                border-radius: 5px;
+                color: var(--white);
+                text-decoration: none;
+                box-shadow: 0 0 3px var(--clr00);
+            }
+            
+            .channel{
+                font-size: 16px; 
+                font-weight: 550;
+            }
+            
+            
+            
+            @media screen and (max-width: 900px) {
+                .holder,
+                .sHolder{
+                    align-content: center;
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+            
+            
+            @media screen and (max-width: 500px) {
+                .holder,
+                .sHolder{
+                    grid-template-columns: repeat(1, 1fr);
+                }
+            } 
+            
+                 
+    
+  </style>
+  
+  
+</head>
+
+<body>
+  
+  <header class="header">
+    
+    <input type="text" class="searchBox" />
+  </header>
+  
+  
+  
+  
+  <div class="holder">
+
+    <!--
+    
+    <div class="box">
+      
+      <img class="box-bg" src="https://wallpapers.com/images/high/embracing-the-sublime-tranquility-a-glimpse-of-the-sunset-aesthetic-pii0lxq5jxqacmi5.webp" alt="" />
+
+      <div class="content">
+        <h1 class="title">Dream</h1>
+        <p class="more"><span class="artist">Lirin</span><span class="pbdate">19 Dec 2035</span></p>
+      </div>
+      
+      <div class="details">
+        <h1 class="title">Dream</h1>
+        <h2 class="artists">Lirin</h2>
+        <h3 class="genre">Genre - Chillstep Chillout Ambient Chill MelodicDubstep</h3>
+        <h3 class="moode">Feel - Chillstep Chillout Ambient Chill MelodicDubstep</h3>
+        <h3 class="publish-date">12 Jun 2025</h3>
+        <p class="links"><a href="" class="artwork">Artwork</a>
+        <a href="" class="art">Art</a>
+        <a href="" class="sors">Source</a>
+        <a href="" class="con-link">Link</a></p>
+        <p class="channel">Loved by - Aurven</p>
+      </div>
+      
+    </div>
+    -->
+  </div>
+  
+  <div class="sHolder">
+    
+  </div>
+  
+  
+  
+   
+  <script src="data.js"></script> 
+  
+  <script>
+      
+      let holder = document.querySelector('.holder');
+      let sHolder = document.querySelector('.sHolder'); // The container to hold search results
+      let searchBox = document.querySelector('.searchBox'); // The input box for search
+      
+      creatBoxes(data, holder); // Initialize with all data
+      
+      // Event listener for search input
+      searchBox.addEventListener('keydown', function() {
+          
+          if (!searchBox.value) {
+              sHolder.style.display = "none";
+              sHolder.style.width = "0";
+          } else {
+              sHolder.style.display = "grid";
+              sHolder.style.width = "100%";
+          }
+          
+          const searchTerm = searchBox.value.toLowerCase();
+          filterData(searchTerm);
+      });
+      
+      function creatBoxes(dataz, placeBox) {
+          placeBox.innerHTML = ''; // Clear current content
+          
+          dataz.forEach(info => {
+              let artistsf = info.artist;
+              if (info.subArtist !== '') {
+                  artistsf = info.artist + ' & ' + info.subArtist;
+              }
+              
+              // Create the main container for the box
+              const box = document.createElement('div');
+              box.classList.add('box');
+              
+              // Create and append the background image
+              const boxBg = document.createElement('img');
+              boxBg.classList.add('box-bg');
+              boxBg.src = info.art;
+              boxBg.alt = `${info.name} Cover`;
+              box.appendChild(boxBg);
+              
+              // Create the content section
+              const content = document.createElement('div');
+              content.classList.add('content');
+              
+              // Create and append the title
+              const title = document.createElement('h1');
+              title.classList.add('title');
+              title.textContent = info.name;
+              content.appendChild(title);
+              
+              // Create and append the artist and publish date
+              const more = document.createElement('p');
+              more.classList.add('more');
+              const artistSpan = document.createElement('span');
+              artistSpan.classList.add('artist');
+              artistSpan.textContent = info.artist;
+              more.appendChild(artistSpan);
+              
+              const pbDateSpan = document.createElement('span');
+              pbDateSpan.classList.add('pbdate');
+              pbDateSpan.textContent = info.publishDate;
+              more.appendChild(pbDateSpan);
+              
+              content.appendChild(more);
+              box.appendChild(content);
+              
+              // Create the details section
+              const details = document.createElement('div');
+              details.classList.add('details');
+              
+              // Title for details
+              const detailsTitle = document.createElement('h1');
+              detailsTitle.classList.add('title');
+              detailsTitle.textContent = info.name;
+              details.appendChild(detailsTitle);
+              
+              // Artists
+              const artists = document.createElement('h2');
+              artists.classList.add('artists');
+              artists.textContent = artistsf;
+              details.appendChild(artists);
+              
+              // Genre
+              const genre = document.createElement('h3');
+              genre.classList.add('genre');
+              genre.textContent = `Genre - ${info.genre}`;
+              details.appendChild(genre);
+              
+              // Mood
+              const mood = document.createElement('h3');
+              mood.classList.add('moode');
+              mood.textContent = `Feel - ${info.mood}`;
+              details.appendChild(mood);
+              
+              // Publish Date
+              const publishDate = document.createElement('h3');
+              publishDate.classList.add('publish-date');
+              publishDate.textContent = info.publishDate;
+              details.appendChild(publishDate);
+              
+              // Links section (with target="_blank" to open in a new window)
+              const links = document.createElement('p');
+              links.classList.add('links');
+              
+              const artworkLink = document.createElement('a');
+              artworkLink.href = info.artwork;
+              artworkLink.classList.add('artwork');
+              artworkLink.textContent = 'Artwork';
+              artworkLink.target = '_blank'; // Open in a new window
+              links.appendChild(artworkLink);
+              
+              const artLink = document.createElement('a');
+              artLink.href = info.art;
+              artLink.classList.add('art');
+              artLink.textContent = 'Art';
+              artLink.target = '_blank'; // Open in a new window
+              links.appendChild(artLink);
+              
+              const artFlink = document.createElement('a');
+              artFlink.href = info.artf;
+              artFlink.classList.add('art-f');
+              artFlink.textContent = 'F';
+              artFlink.target = '_blank'; // Open in a new window
+              links.appendChild(artFlink);
+              
+              const sourceLink = document.createElement('a');
+              sourceLink.href = info.arLnk;
+              sourceLink.classList.add('sors');
+              sourceLink.textContent = 'Source';
+              sourceLink.target = '_blank'; // Open in a new window
+              links.appendChild(sourceLink);
+              
+              const conLink = document.createElement('a');
+              conLink.href = info.pbLnk;
+              conLink.classList.add('con-link');
+              conLink.textContent = 'Link';
+              conLink.target = '_blank'; // Open in a new window
+              links.appendChild(conLink);
+              
+              
+              details.appendChild(links);
+              
+              // Channel info
+              const channel = document.createElement('p');
+              channel.classList.add('channel');
+              channel.textContent = `Loved by - ${info.channel}`;
+              details.appendChild(channel);
+              
+              // Append the details to the box
+              box.appendChild(details);
+              
+              // Append the box to the holder
+              placeBox.appendChild(box);
+          });
+      }
+      
+      // Filter data based on the search term
+      function filterData(searchTerm) {
+          const filteredData = data.filter(info => {
+              const artistMatch = info.artist.toLowerCase().includes(searchTerm);
+              const titleMatch = info.name.toLowerCase().includes(searchTerm);
+              const genreMatch = info.genre.toLowerCase().includes(searchTerm);
+              const moodMatch = info.mood.toLowerCase().includes(searchTerm);
+              const pbDateMatch = info.publishDate.toLowerCase().includes(searchTerm);
+              const linkMatch = (info.artwork.toLowerCase().includes(searchTerm) ||
+                  info.art.toLowerCase().includes(searchTerm) ||
+                  info.arLnk.toLowerCase().includes(searchTerm) ||
+                  info.pbLnk.toLowerCase().includes(searchTerm));
+              
+              return artistMatch || titleMatch || genreMatch || moodMatch || pbDateMatch || linkMatch;
+          });
+          
+          creatBoxes(filteredData, sHolder); // Update the search results in sHolder
+          /*
+          updateSearchResults(filteredData); // Update the search results in sHolder -- in 173 line
+          */
+      }
+      
+      // Update search results in sHolder
+      
+      /*
+      function updateSearchResults(dataz) {
+        sHolder.innerHTML = ''; // Clear previous search results
+      
+        dataz.forEach(info => {
+          let artistsf = info.artist;
+          if (info.subArtist !== '') {
+            artistsf = info.artist + ' & ' + info.subArtist;
+          }
+      
+          // Create the main container for the box (search result)
+          const box = document.createElement('div');
+          box.classList.add('box');
+      
+          // Create and append the background image
+          const boxBg = document.createElement('img');
+          boxBg.classList.add('box-bg');
+          boxBg.src = info.art;
+          boxBg.alt = `${info.name} Cover`;
+          box.appendChild(boxBg);
+      
+          // Create the content section
+          const content = document.createElement('div');
+          content.classList.add('content');
+      
+          // Create and append the title
+          const title = document.createElement('h1');
+          title.classList.add('title');
+          title.textContent = info.name;
+          content.appendChild(title);
+      
+          // Create and append the artist and publish date
+          const more = document.createElement('p');
+          more.classList.add('more');
+          const artistSpan = document.createElement('span');
+          artistSpan.classList.add('artist');
+          artistSpan.textContent = info.artist;
+          more.appendChild(artistSpan);
+      
+          const pbDateSpan = document.createElement('span');
+          pbDateSpan.classList.add('pbdate');
+          pbDateSpan.textContent = info.publishDate;
+          more.appendChild(pbDateSpan);
+      
+          content.appendChild(more);
+          box.appendChild(content);
+      
+          // Append the box to the sHolder (search results container)
+          sHolder.appendChild(box);
+        });
+      }
+      */      
+      
+  </script>
+</body>
+</html>
